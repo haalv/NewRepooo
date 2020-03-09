@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnEasy = new System.Windows.Forms.Button();
+            this.timerPress = new System.Windows.Forms.Timer(this.components);
+            this.lblNivå = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnEasy
@@ -37,28 +40,45 @@
             this.btnEasy.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnEasy.Location = new System.Drawing.Point(23, 12);
             this.btnEasy.Name = "btnEasy";
-            this.btnEasy.Size = new System.Drawing.Size(75, 23);
+            this.btnEasy.Size = new System.Drawing.Size(79, 29);
             this.btnEasy.TabIndex = 0;
             this.btnEasy.Text = "Easy";
             this.btnEasy.UseVisualStyleBackColor = false;
             this.btnEasy.Click += new System.EventHandler(this.Button1_Click);
+            // 
+            // timerPress
+            // 
+            this.timerPress.Interval = 300;
+            this.timerPress.Tick += new System.EventHandler(this.Timer1_Tick);
+            // 
+            // lblNivå
+            // 
+            this.lblNivå.AutoSize = true;
+            this.lblNivå.Location = new System.Drawing.Point(195, 20);
+            this.lblNivå.Name = "lblNivå";
+            this.lblNivå.Size = new System.Drawing.Size(0, 13);
+            this.lblNivå.TabIndex = 1;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblNivå);
             this.Controls.Add(this.btnEasy);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button btnEasy;
+        private System.Windows.Forms.Timer timerPress;
+        private System.Windows.Forms.Label lblNivå;
     }
 }
 

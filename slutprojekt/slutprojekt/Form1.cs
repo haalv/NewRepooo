@@ -28,11 +28,19 @@ namespace slutprojekt
 
         int yVärde = 50;
 
+
+        //Skapa gamemodes
         int easy = 25;
+
 
         int xVärde = 50;
 
         int nyRad = 1;
+
+        bool fårKlicka = true;
+
+        int nivå = 0;
+
 
         void skapaKnappar()
         {
@@ -49,6 +57,8 @@ namespace slutprojekt
                 knappLista.ElementAt(i).Size = new System.Drawing.Size(20, 20);
                 knappLista.ElementAt(i).UseVisualStyleBackColor = true;
                 knappLista.ElementAt(i).TabIndex = 0;
+                knappLista.ElementAt(i).BackColor = Color.FromArgb(255, 255, 255);
+                knappLista.ElementAt(i).Tag = i.ToString();
 
                 //Lägg till knappen i Formen
                 this.Controls.Add(this.knappLista.ElementAt(i));
@@ -77,13 +87,32 @@ namespace slutprojekt
             mode = easy;
 
             skapaKnappar();
+
+            nivå = 1;
+
+            lblNivå.Text = "Nivå: " + nivå.ToString();
         }
+
+        Button referens;
+        //Skapa en referensknapp som utför händelser
 
         private void click(object sender, EventArgs e)
         {
-            Button b = sender as Button;
-            b.BackColor = Color.FromArgb(255, 0, 0);
-            //knappLista.ElementAt(0).BackColor = Color.FromArgb(255,0,0);
+            if(fårKlicka == true)
+            {
+                referens = sender as Button;
+                referens.BackColor = Color.FromArgb(255, 0, 0);
+                //knappLista.ElementAt(0).BackColor = Color.FromArgb(255,0,0);
+                timerPress.Enabled = true;
+            }
+            fårKlicka = false;
+        }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            referens.BackColor = Color.FromArgb(255, 255, 255);
+            timerPress.Enabled = false;
+            fårKlicka = true;
         }
     }
 }
