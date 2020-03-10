@@ -26,14 +26,27 @@ namespace slutprojekt
 
         int räknare = 0;
 
-        int yVärde = 50;
+        int yVärde = 100;
 
 
         //Skapa gamemodes
         int easy = 25;
 
+        //Skapa en random int
+        Random random = new Random();
 
-        int xVärde = 50;
+        //Skapa en lista med tagföljd
+
+        List<int> taglista = new List<int>();
+
+        int tag;
+
+        int räknareEasy = 0;
+
+        int xVärde = 100;
+
+        //en bool som säger om du får spela
+        bool spela = false;
 
         int nyRad = 1;
 
@@ -41,6 +54,11 @@ namespace slutprojekt
 
         int nivå = 0;
 
+        int värde;
+
+        int limit = 2;
+
+        int räknare3 = 0;
 
         void skapaKnappar()
         {
@@ -53,12 +71,12 @@ namespace slutprojekt
 
 
                 //Ge egenskaper till knapp i knapplistan
-                knappLista.ElementAt(i).Location = new System.Drawing.Point((xVärde + (i*50)), yVärde);
-                knappLista.ElementAt(i).Size = new System.Drawing.Size(20, 20);
+                knappLista.ElementAt(i).Location = new System.Drawing.Point((xVärde + (i*100)), yVärde);
+                knappLista.ElementAt(i).Size = new System.Drawing.Size(50, 50);
                 knappLista.ElementAt(i).UseVisualStyleBackColor = true;
                 knappLista.ElementAt(i).TabIndex = 0;
                 knappLista.ElementAt(i).BackColor = Color.FromArgb(255, 255, 255);
-                knappLista.ElementAt(i).Tag = i.ToString();
+                knappLista.ElementAt(i).Tag = i;
 
                 //Lägg till knappen i Formen
                 this.Controls.Add(this.knappLista.ElementAt(i));
@@ -69,9 +87,9 @@ namespace slutprojekt
                 knappLista.ElementAt(i).Name = i.ToString();
                 if (nyRad % 5 == 0)
                 {
-                    yVärde += 50;
+                    yVärde += 100;
 
-                    xVärde -= 250;
+                    xVärde -= 500;
                 }
                 nyRad++;
             }
@@ -84,6 +102,8 @@ namespace slutprojekt
         }
         private void Button1_Click(object sender, EventArgs e)
         {
+            btnStart.Visible = true;
+
             mode = easy;
 
             skapaKnappar();
@@ -104,6 +124,20 @@ namespace slutprojekt
                 referens.BackColor = Color.FromArgb(255, 0, 0);
                 //knappLista.ElementAt(0).BackColor = Color.FromArgb(255,0,0);
                 timerPress.Enabled = true;
+                if (spela == true)
+                {
+                    if ((int)referens.Tag != taglista[räknare3])
+                      {
+                        MessageBox.Show("Det var fel knapp kompis");
+                      }
+                    räknare3++;
+                    if (räknare3 == (limit-1))
+                    {
+                        räknare3 = 0;
+                        taglista.Clear();
+                    }
+
+                }
             }
             fårKlicka = false;
         }
@@ -113,6 +147,43 @@ namespace slutprojekt
             referens.BackColor = Color.FromArgb(255, 255, 255);
             timerPress.Enabled = false;
             fårKlicka = true;
+        }
+
+        private void BtnStart_Click(object sender, EventArgs e)
+        {
+            if(mode == easy)
+            {
+                timerStart.Interval = 750;
+                timerStart.Enabled = true;
+            }
+        }
+
+        private void TimerStart_Tick(object sender, EventArgs e)
+        {
+            if(mode == easy)
+            {
+                if(räknareEasy <= limit)
+                {
+                    värde = random.Next(0, 25);
+                    foreach (Button b in knappLista)
+                    {
+                        if ((int)b.Tag == värde)
+                        {
+                            taglista.Add((int)b.Tag);
+                            fårKlicka = true;
+                            b.PerformClick();
+                        }
+                    }
+                    räknareEasy++;
+                }
+            }
+            if(räknareEasy == limit)
+            {
+                limit++;
+                räknareEasy = 0;
+                timerStart.Enabled = false;
+                spela = true;
+            }
         }
     }
 }
