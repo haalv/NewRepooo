@@ -130,11 +130,14 @@ namespace slutprojekt
                       {
                         MessageBox.Show("Det var fel knapp kompis");
                       }
-                    räknare3++;
                     if (räknare3 == (limit-1))
                     {
                         räknare3 = 0;
                         taglista.Clear();
+                    }
+                    else
+                    {
+                        räknare3++;
                     }
 
                 }
