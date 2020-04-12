@@ -120,7 +120,7 @@ namespace knappSpel
                     spela = false;
                     ronder = 4;
                     räknare = 0;
-                    MessageBox.Show("Du förlorade precis kompis");
+                    MessageBox.Show("Du förlorade precis, kompis.");
                     nyStart = true;
                     btnStart.Text = "Starta";
                     matchningsLista.Clear();
@@ -130,7 +130,7 @@ namespace knappSpel
                     räknare++;
                     if(räknare == ronder)
                     {
-                        MessageBox.Show("Grattis du klarade nivå " + (ronder - 3));
+                        MessageBox.Show("Grattis du klarade nivå " + (ronder - 3) + "!");
                         ronder++;
                         räknare = 0;
                         matchningsLista.Clear();
