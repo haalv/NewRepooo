@@ -17,37 +17,56 @@ namespace knappSpel
             InitializeComponent();
         }
 
+        //Listor
         List<Button> knappLista = new List<Button>();
-
-        bool nyStart = true;
-
-        bool startaSpel;
-
-        int xVärde = 100;
-
-        int yVärde = 100;
 
         List<int> matchningsLista = new List<int>();
 
-        bool fårKlicka;
-
+        //Buttons
         Button b;
 
         Button b2;
 
         Random random = new Random();
 
+        //Ints
         int värde;
 
         int räknare = 0;
 
         int ronder = 4;
 
+        int xVärde = 100;
+
+        int yVärde = 100;
+
+        //Bools
         bool spela;
 
-        bool simulation;
-
         bool restart = false;
+
+        bool fårKlicka;
+
+        bool nyStart = true;
+
+        bool startaSpel;
+
+        bool spelknapp;
+
+        bool vinstLjud;
+
+        bool förlustLjud;
+
+        bool startLjud;
+
+        //Ljudfiler
+        System.Media.SoundPlayer klickadKnapp = new System.Media.SoundPlayer("KlickLjud_Knapp.wav");
+
+        System.Media.SoundPlayer vinst = new System.Media.SoundPlayer("winLjud.wav");
+
+        System.Media.SoundPlayer förlust = new System.Media.SoundPlayer("Bruh.wav");
+
+        System.Media.SoundPlayer start = new System.Media.SoundPlayer("StartLjud.wav");
 
         private void btnStart_Click(object sender, EventArgs e)
         {
@@ -88,25 +107,49 @@ namespace knappSpel
             }
             else if(startaSpel == true)
             {
+                startLjud = true;
+                Ljud();
                 simulationTimer.Enabled = true;
                 startaSpel = false;
-                simulation = true;
+            }
+        }
+
+        void Ljud()
+        {
+            if(spelknapp == true)
+            {
+                klickadKnapp.Play();
+                spelknapp = false;
+            }
+            if(vinstLjud == true)
+            {
+                vinst.Play();
+                vinstLjud = false;
+            }
+            if(förlustLjud == true)
+            {
+                förlust.Play();
+                förlustLjud = false;
+            }
+            if(startLjud == true)
+            {
+                start.Play();
+                startLjud = false;
             }
         }
 
         //Händelsen när en knapp trycks
         void klickad(object sender, EventArgs e)
         {
-            if(simulation == true)
+            if (fårKlicka == true)
             {
-                if (fårKlicka == true)
-                {
-                    b2 = b;
-                    fårKlicka = false;
-                    b2 = sender as Button;
-                    b2.BackColor = Color.FromArgb(255, 0, 0);
-                    timerKlick.Enabled = true;
-                }
+                 b2 = b;
+                 fårKlicka = false;
+                 b2 = sender as Button;
+                 b2.BackColor = Color.FromArgb(255, 0, 0);
+                 spelknapp = true;
+                 Ljud();
+                 timerKlick.Enabled = true;
             }
 
             //om spelaren klickar
@@ -114,12 +157,17 @@ namespace knappSpel
             {
                 b = sender as Button;
                 b.BackColor = Color.FromArgb(255, 0, 0);
+                spelknapp = true;
+                Ljud();
                 timerKlick.Enabled = true;
+                //Om du förlorar
                 if(int.Parse(b.Tag.ToString()) != matchningsLista[räknare])
                 {
                     spela = false;
                     ronder = 4;
                     räknare = 0;
+                    förlustLjud = true;
+                    Ljud();
                     MessageBox.Show("Du förlorade precis, kompis.");
                     nyStart = true;
                     btnStart.Text = "Starta";
@@ -128,8 +176,11 @@ namespace knappSpel
                 else
                 {
                     räknare++;
+                    //Om du vinner
                     if(räknare == ronder)
                     {
+                        vinstLjud = true;
+                        Ljud();
                         MessageBox.Show("Grattis du klarade nivå " + (ronder - 3) + "!");
                         ronder++;
                         räknare = 0;
@@ -168,7 +219,6 @@ namespace knappSpel
                 simulationTimer.Enabled = false;
                 räknare = 0;
                 spela = true;
-                simulation = false;
             }
         }
     }
