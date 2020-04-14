@@ -27,6 +27,7 @@ namespace knappSpel
 
         Button b2;
 
+        //Random
         Random random = new Random();
 
         //Ints
@@ -72,7 +73,9 @@ namespace knappSpel
         {
             if(nyStart == true)
             {
+
                 lblNivå.Text = ("Nivå 1");
+
                 if(restart == false)
                 {
                     for (int i = 0; i < 25; i++)
@@ -116,7 +119,7 @@ namespace knappSpel
 
         void Ljud()
         {
-            if(spelknapp == true)
+            if (spelknapp == true)
             {
                 klickadKnapp.Play();
                 spelknapp = false;
