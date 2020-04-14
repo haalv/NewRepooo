@@ -33,6 +33,7 @@
             this.timerKlick = new System.Windows.Forms.Timer(this.components);
             this.simulationTimer = new System.Windows.Forms.Timer(this.components);
             this.lblNivå = new System.Windows.Forms.Label();
+            this.lblLiv = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnStart
@@ -64,11 +65,21 @@
             this.lblNivå.Size = new System.Drawing.Size(0, 21);
             this.lblNivå.TabIndex = 1;
             // 
+            // lblLiv
+            // 
+            this.lblLiv.AutoSize = true;
+            this.lblLiv.Font = new System.Drawing.Font("Modern No. 20", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLiv.Location = new System.Drawing.Point(300, 50);
+            this.lblLiv.Name = "lblLiv";
+            this.lblLiv.Size = new System.Drawing.Size(0, 21);
+            this.lblLiv.TabIndex = 2;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblLiv);
             this.Controls.Add(this.lblNivå);
             this.Controls.Add(this.btnStart);
             this.Name = "Form1";
@@ -84,6 +95,7 @@
         private System.Windows.Forms.Timer timerKlick;
         private System.Windows.Forms.Timer simulationTimer;
         private System.Windows.Forms.Label lblNivå;
+        private System.Windows.Forms.Label lblLiv;
     }
 }
 

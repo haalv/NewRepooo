@@ -41,6 +41,8 @@ namespace knappSpel
 
         int yVärde = 100;
 
+        int liv;
+
         //Bools
         bool spela;
 
@@ -60,14 +62,20 @@ namespace knappSpel
 
         bool startLjud;
 
+        bool slutPåLiv;
+
+        bool felKnapp;
+
         //Ljudfiler
         System.Media.SoundPlayer klickadKnapp = new System.Media.SoundPlayer("KlickLjud_Knapp.wav");
 
-        System.Media.SoundPlayer vinst = new System.Media.SoundPlayer("winLjud.wav");
+        System.Media.SoundPlayer vinst = new System.Media.SoundPlayer("music.wav");
 
         System.Media.SoundPlayer förlust = new System.Media.SoundPlayer("Bruh.wav");
 
         System.Media.SoundPlayer start = new System.Media.SoundPlayer("StartLjud.wav");
+
+        System.Media.SoundPlayer felLjud = new System.Media.SoundPlayer("wrong.wav");
 
         private void btnStart_Click(object sender, EventArgs e)
         {
@@ -107,6 +115,8 @@ namespace knappSpel
                 startaSpel = true;
                 nyStart = false;
                 btnStart.Text = "börja nivå";
+                liv = 3;
+                lblLiv.Text = "Liv: " + liv;
             }
             else if(startaSpel == true)
             {
@@ -119,22 +129,27 @@ namespace knappSpel
 
         void Ljud()
         {
-            if (spelknapp == true)
+            if(felKnapp == true)
+            {
+                felLjud.Play();
+                felKnapp = false;
+            }
+            else if (spelknapp == true)
             {
                 klickadKnapp.Play();
                 spelknapp = false;
             }
-            if(vinstLjud == true)
+            else if(vinstLjud == true)
             {
                 vinst.Play();
                 vinstLjud = false;
             }
-            if(förlustLjud == true)
+            else if(förlustLjud == true)
             {
                 förlust.Play();
                 förlustLjud = false;
             }
-            if(startLjud == true)
+            else if(startLjud == true)
             {
                 start.Play();
                 startLjud = false;
@@ -144,6 +159,7 @@ namespace knappSpel
         //Händelsen när en knapp trycks
         void klickad(object sender, EventArgs e)
         {
+            //simulationen
             if (fårKlicka == true)
             {
                  b2 = b;
@@ -160,11 +176,9 @@ namespace knappSpel
             {
                 b = sender as Button;
                 b.BackColor = Color.FromArgb(255, 0, 0);
-                spelknapp = true;
-                Ljud();
                 timerKlick.Enabled = true;
                 //Om du förlorar
-                if(int.Parse(b.Tag.ToString()) != matchningsLista[räknare])
+                if(int.Parse(b.Tag.ToString()) != matchningsLista[räknare] && slutPåLiv == true)
                 {
                     spela = false;
                     ronder = 4;
@@ -176,21 +190,42 @@ namespace knappSpel
                     btnStart.Text = "Starta";
                     matchningsLista.Clear();
                 }
-                else
+                else if(int.Parse(b.Tag.ToString()) == matchningsLista[räknare])
                 {
                     räknare++;
+                    spelknapp = true;
                     //Om du vinner
                     if(räknare == ronder)
                     {
+                        spelknapp = false;
                         vinstLjud = true;
                         Ljud();
+                        slutPåLiv = false;
                         MessageBox.Show("Grattis du klarade nivå " + (ronder - 3) + "!");
+                        vinst.Stop();
                         ronder++;
                         räknare = 0;
                         matchningsLista.Clear();
                         startaSpel = true;
                         lblNivå.Text = "Nivå " + (ronder - 3);
                         spela = false;
+                        liv = 3;
+                        lblLiv.Text = "Liv :" + liv;
+                    }
+                    else
+                    {
+                        Ljud();
+                    }
+                }
+                else
+                {
+                    felKnapp = true;
+                    Ljud();
+                    liv--;
+                    lblLiv.Text = "Liv: " + liv;
+                    if (liv == 0)
+                    {
+                        slutPåLiv = true;
                     }
                 }
             }
