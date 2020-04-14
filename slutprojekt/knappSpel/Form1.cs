@@ -176,6 +176,7 @@ namespace knappSpel
             {
                 b = sender as Button;
                 b.BackColor = Color.FromArgb(255, 0, 0);
+                spela = false;
                 timerKlick.Enabled = true;
                 //Om du förlorar
                 if(int.Parse(b.Tag.ToString()) != matchningsLista[räknare] && slutPåLiv == true)
@@ -236,6 +237,8 @@ namespace knappSpel
             b.BackColor = Color.FromArgb(255, 255, 255);
 
             b2.BackColor = Color.FromArgb(255, 255, 255);
+
+            spela = true;
 
             timerKlick.Enabled = false;
         }
