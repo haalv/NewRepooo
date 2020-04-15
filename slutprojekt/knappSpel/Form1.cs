@@ -66,6 +66,8 @@ namespace knappSpel
 
         bool felKnapp;
 
+        bool simulation;
+
         //Ljudfiler
         System.Media.SoundPlayer klickadKnapp = new System.Media.SoundPlayer("KlickLjud_Knapp.wav");
 
@@ -81,6 +83,7 @@ namespace knappSpel
         {
             if(nyStart == true)
             {
+                lblLiv.Text = "Liv: " + liv;
 
                 lblNivå.Text = ("Nivå 1");
 
@@ -162,6 +165,7 @@ namespace knappSpel
             //simulationen
             if (fårKlicka == true)
             {
+                simulation = true;
                  b2 = b;
                  fårKlicka = false;
                  b2 = sender as Button;
@@ -178,10 +182,13 @@ namespace knappSpel
                 b.BackColor = Color.FromArgb(255, 0, 0);
                 spela = false;
                 timerKlick.Enabled = true;
-                //Om du förlorar
-                if(int.Parse(b.Tag.ToString()) != matchningsLista[räknare] && slutPåLiv == true)
+
+                //Ifall spelaren förlorar
+                if (int.Parse(b.Tag.ToString()) != matchningsLista[räknare] && slutPåLiv == true)
                 {
-                    spela = false;
+                    simulation = true;
+                    liv = 3;
+                    slutPåLiv = false;
                     ronder = 4;
                     räknare = 0;
                     förlustLjud = true;
@@ -191,6 +198,7 @@ namespace knappSpel
                     btnStart.Text = "Starta";
                     matchningsLista.Clear();
                 }
+                //Ifall spelaren klickar rätt knapp
                 else if(int.Parse(b.Tag.ToString()) == matchningsLista[räknare])
                 {
                     räknare++;
@@ -218,6 +226,7 @@ namespace knappSpel
                         Ljud();
                     }
                 }
+                //ifall spelaren väljer fel knapp
                 else
                 {
                     felKnapp = true;
@@ -237,8 +246,15 @@ namespace knappSpel
             b.BackColor = Color.FromArgb(255, 255, 255);
 
             b2.BackColor = Color.FromArgb(255, 255, 255);
-
-            spela = true;
+            
+            if(simulation == false)
+            {
+                spela = true;
+            }
+            else
+            {
+                spela = false;
+            }
 
             timerKlick.Enabled = false;
         }
@@ -255,11 +271,12 @@ namespace knappSpel
 
             räknare++;
 
-            if (räknare == ronder)
+            if (räknare == ronder && simulation == true)
             {
                 simulationTimer.Enabled = false;
                 räknare = 0;
                 spela = true;
+                simulation = false;
             }
         }
     }
