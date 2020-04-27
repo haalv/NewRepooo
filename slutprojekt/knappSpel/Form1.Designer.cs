@@ -34,6 +34,7 @@
             this.simulationTimer = new System.Windows.Forms.Timer(this.components);
             this.lblNivå = new System.Windows.Forms.Label();
             this.lblLiv = new System.Windows.Forms.Label();
+            this.lblPoäng = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnStart
@@ -74,11 +75,21 @@
             this.lblLiv.Size = new System.Drawing.Size(0, 21);
             this.lblLiv.TabIndex = 2;
             // 
+            // lblPoäng
+            // 
+            this.lblPoäng.AutoSize = true;
+            this.lblPoäng.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPoäng.Location = new System.Drawing.Point(467, 17);
+            this.lblPoäng.Name = "lblPoäng";
+            this.lblPoäng.Size = new System.Drawing.Size(0, 25);
+            this.lblPoäng.TabIndex = 3;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblPoäng);
             this.Controls.Add(this.lblLiv);
             this.Controls.Add(this.lblNivå);
             this.Controls.Add(this.btnStart);
@@ -96,6 +107,7 @@
         private System.Windows.Forms.Timer simulationTimer;
         private System.Windows.Forms.Label lblNivå;
         private System.Windows.Forms.Label lblLiv;
+        private System.Windows.Forms.Label lblPoäng;
     }
 }
 

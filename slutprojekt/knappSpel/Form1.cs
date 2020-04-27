@@ -43,6 +43,8 @@ namespace knappSpel
 
         int liv;
 
+        int poäng = 0;
+
         //Bools
         bool spela;
 
@@ -120,6 +122,8 @@ namespace knappSpel
                 btnStart.Text = "börja nivå";
                 liv = 3;
                 lblLiv.Text = "Liv: " + liv;
+                poäng = 0;
+                lblPoäng.Text = "Poäng: " + poäng;
             }
             else if(startaSpel == true)
             {
@@ -201,17 +205,21 @@ namespace knappSpel
                 //Ifall spelaren klickar rätt knapp
                 else if(int.Parse(b.Tag.ToString()) == matchningsLista[räknare])
                 {
+                    poäng += (ronder - 3);
+                    lblPoäng.Text = "Poäng: " + poäng;
                     räknare++;
                     spelknapp = true;
                     //Om du vinner
                     if(räknare == ronder)
                     {
+                        poäng += (ronder-3)*10;
                         spelknapp = false;
                         vinstLjud = true;
                         Ljud();
                         slutPåLiv = false;
                         MessageBox.Show("Grattis du klarade nivå " + (ronder - 3) + "!");
                         vinst.Stop();
+                        lblPoäng.Text = "Poäng: " + poäng;
                         ronder++;
                         räknare = 0;
                         matchningsLista.Clear();
