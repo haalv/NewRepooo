@@ -35,6 +35,7 @@
             this.lblNivå = new System.Windows.Forms.Label();
             this.lblLiv = new System.Windows.Forms.Label();
             this.lblPoäng = new System.Windows.Forms.Label();
+            this.lblPoänglista = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnStart
@@ -78,17 +79,26 @@
             // lblPoäng
             // 
             this.lblPoäng.AutoSize = true;
-            this.lblPoäng.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPoäng.Location = new System.Drawing.Point(467, 17);
+            this.lblPoäng.Font = new System.Drawing.Font("Palatino Linotype", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPoäng.Location = new System.Drawing.Point(425, 15);
             this.lblPoäng.Name = "lblPoäng";
-            this.lblPoäng.Size = new System.Drawing.Size(0, 25);
+            this.lblPoäng.Size = new System.Drawing.Size(0, 32);
             this.lblPoäng.TabIndex = 3;
+            // 
+            // lblPoänglista
+            // 
+            this.lblPoänglista.AutoSize = true;
+            this.lblPoänglista.Location = new System.Drawing.Point(575, 100);
+            this.lblPoänglista.Name = "lblPoänglista";
+            this.lblPoänglista.Size = new System.Drawing.Size(0, 13);
+            this.lblPoänglista.TabIndex = 4;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblPoänglista);
             this.Controls.Add(this.lblPoäng);
             this.Controls.Add(this.lblLiv);
             this.Controls.Add(this.lblNivå);
@@ -108,6 +118,7 @@
         private System.Windows.Forms.Label lblNivå;
         private System.Windows.Forms.Label lblLiv;
         private System.Windows.Forms.Label lblPoäng;
+        private System.Windows.Forms.Label lblPoänglista;
     }
 }
 

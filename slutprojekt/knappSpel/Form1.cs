@@ -15,7 +15,11 @@ namespace knappSpel
         public Form1()
         {
             InitializeComponent();
+            Form2.nyStart = true;
         }
+
+        //Forms
+        public static Form2 highscore = new Form2();
 
         //Listor
         List<Button> knappLista = new List<Button>();
@@ -43,7 +47,7 @@ namespace knappSpel
 
         int liv;
 
-        int poäng = 0;
+        public static int poäng = 0;
 
         //Bools
         bool spela;
@@ -51,8 +55,6 @@ namespace knappSpel
         bool restart = false;
 
         bool fårKlicka;
-
-        bool nyStart = true;
 
         bool startaSpel;
 
@@ -83,7 +85,7 @@ namespace knappSpel
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            if(nyStart == true)
+            if (Form2.nyStart == true)
             {
                 lblLiv.Text = "Liv: " + liv;
 
@@ -118,7 +120,7 @@ namespace knappSpel
                     restart = true;
                 }
                 startaSpel = true;
-                nyStart = false;
+                Form2.nyStart = false;
                 btnStart.Text = "börja nivå";
                 liv = 3;
                 lblLiv.Text = "Liv: " + liv;
@@ -198,7 +200,7 @@ namespace knappSpel
                     förlustLjud = true;
                     Ljud();
                     MessageBox.Show("Du förlorade precis, kompis.");
-                    nyStart = true;
+                    highscore.Show();
                     btnStart.Text = "Starta";
                     matchningsLista.Clear();
                 }
@@ -213,13 +215,13 @@ namespace knappSpel
                     if(räknare == ronder)
                     {
                         poäng += (ronder-3)*10;
+                        lblPoäng.Text = "Poäng: " + poäng;
                         spelknapp = false;
                         vinstLjud = true;
                         Ljud();
                         slutPåLiv = false;
                         MessageBox.Show("Grattis du klarade nivå " + (ronder - 3) + "!");
                         vinst.Stop();
-                        lblPoäng.Text = "Poäng: " + poäng;
                         ronder++;
                         räknare = 0;
                         matchningsLista.Clear();
