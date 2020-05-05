@@ -16,10 +16,11 @@ namespace knappSpel
         {
             InitializeComponent();
             Form2.nyStart = true;
+            lblPoänglista.Text = "Highscore lista" + "\r\n";
         }
 
         //Forms
-        public static Form2 highscore = new Form2();
+        public static Form2 highscore;
 
         //Listor
         List<Button> knappLista = new List<Button>();
@@ -200,6 +201,7 @@ namespace knappSpel
                     förlustLjud = true;
                     Ljud();
                     MessageBox.Show("Du förlorade precis, kompis.");
+                    highscore = new Form2(lblPoänglista);
                     highscore.Show();
                     btnStart.Text = "Starta";
                     matchningsLista.Clear();

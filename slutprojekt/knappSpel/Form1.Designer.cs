@@ -88,9 +88,11 @@
             // lblPoänglista
             // 
             this.lblPoänglista.AutoSize = true;
+            this.lblPoänglista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblPoänglista.Font = new System.Drawing.Font("Showcard Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPoänglista.Location = new System.Drawing.Point(575, 100);
             this.lblPoänglista.Name = "lblPoänglista";
-            this.lblPoänglista.Size = new System.Drawing.Size(0, 13);
+            this.lblPoänglista.Size = new System.Drawing.Size(2, 25);
             this.lblPoänglista.TabIndex = 4;
             // 
             // Form1
