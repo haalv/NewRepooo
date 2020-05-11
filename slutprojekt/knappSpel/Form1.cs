@@ -17,6 +17,7 @@ namespace knappSpel
             InitializeComponent();
             Form2.nyStart = true;
             lblPoänglista.Text = "Highscore lista" + "\r\n";
+            highscore = new Form2(lblPoänglista);
         }
 
         //Forms
@@ -201,7 +202,6 @@ namespace knappSpel
                     förlustLjud = true;
                     Ljud();
                     MessageBox.Show("Du förlorade precis, kompis.");
-                    highscore = new Form2(lblPoänglista);
                     highscore.Show();
                     btnStart.Text = "Starta";
                     matchningsLista.Clear();

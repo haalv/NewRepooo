@@ -83,7 +83,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(395, 91);
+            this.ClientSize = new System.Drawing.Size(361, 95);
             this.Controls.Add(this.lblVisaPoäng);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -91,7 +91,10 @@
             this.Controls.Add(this.button1);
             this.Name = "Form2";
             this.Text = "Form2";
+            this.Activated += new System.EventHandler(this.Form2_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
+            this.Load += new System.EventHandler(this.Form2_Load);
+            this.Shown += new System.EventHandler(this.Form2_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
