@@ -1,6 +1,6 @@
 ﻿namespace knappSpel
 {
-    partial class Form1
+    partial class KnappSpel
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KnappSpel));
             this.btnStart = new System.Windows.Forms.Button();
             this.timerKlick = new System.Windows.Forms.Timer(this.components);
             this.simulationTimer = new System.Windows.Forms.Timer(this.components);
@@ -61,6 +62,7 @@
             // lblNivå
             // 
             this.lblNivå.AutoSize = true;
+            this.lblNivå.BackColor = System.Drawing.Color.Transparent;
             this.lblNivå.Font = new System.Drawing.Font("Modern No. 20", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNivå.Location = new System.Drawing.Point(139, 17);
             this.lblNivå.Name = "lblNivå";
@@ -70,6 +72,7 @@
             // lblLiv
             // 
             this.lblLiv.AutoSize = true;
+            this.lblLiv.BackColor = System.Drawing.Color.Transparent;
             this.lblLiv.Font = new System.Drawing.Font("Modern No. 20", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLiv.Location = new System.Drawing.Point(300, 50);
             this.lblLiv.Name = "lblLiv";
@@ -79,6 +82,7 @@
             // lblPoäng
             // 
             this.lblPoäng.AutoSize = true;
+            this.lblPoäng.BackColor = System.Drawing.Color.Transparent;
             this.lblPoäng.Font = new System.Drawing.Font("Palatino Linotype", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPoäng.Location = new System.Drawing.Point(425, 15);
             this.lblPoäng.Name = "lblPoäng";
@@ -95,18 +99,21 @@
             this.lblPoänglista.Size = new System.Drawing.Size(2, 25);
             this.lblPoänglista.TabIndex = 4;
             // 
-            // Form1
+            // KnappSpel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lblPoänglista);
             this.Controls.Add(this.lblPoäng);
             this.Controls.Add(this.lblLiv);
             this.Controls.Add(this.lblNivå);
             this.Controls.Add(this.btnStart);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "KnappSpel";
+            this.Text = "Knapp Spel";
             this.ResumeLayout(false);
             this.PerformLayout();
 

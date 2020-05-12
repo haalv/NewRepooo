@@ -1,6 +1,6 @@
 ﻿namespace knappSpel
 {
-    partial class Form2
+    partial class Highscore_Lista
     {
         /// <summary>
         /// Required designer variable.
@@ -28,22 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Highscore_Lista));
+            this.btnLäggTillPoäng = new System.Windows.Forms.Button();
             this.tbxNamn = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblVisaPoäng = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // btnLäggTillPoäng
             // 
-            this.button1.Location = new System.Drawing.Point(172, 57);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(113, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Lägg till High-score";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnLäggTillPoäng.Location = new System.Drawing.Point(172, 57);
+            this.btnLäggTillPoäng.Name = "btnLäggTillPoäng";
+            this.btnLäggTillPoäng.Size = new System.Drawing.Size(113, 23);
+            this.btnLäggTillPoäng.TabIndex = 0;
+            this.btnLäggTillPoäng.Text = "Lägg till High-score";
+            this.btnLäggTillPoäng.UseVisualStyleBackColor = true;
+            this.btnLäggTillPoäng.Click += new System.EventHandler(this.button1_Click);
             // 
             // tbxNamn
             // 
@@ -79,7 +80,7 @@
             this.lblVisaPoäng.Size = new System.Drawing.Size(0, 32);
             this.lblVisaPoäng.TabIndex = 4;
             // 
-            // Form2
+            // Highscore_Lista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -88,9 +89,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbxNamn);
-            this.Controls.Add(this.button1);
-            this.Name = "Form2";
-            this.Text = "Form2";
+            this.Controls.Add(this.btnLäggTillPoäng);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "Highscore_Lista";
+            this.Text = "Highscore Lista";
             this.Activated += new System.EventHandler(this.Form2_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
             this.Load += new System.EventHandler(this.Form2_Load);
@@ -102,7 +104,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnLäggTillPoäng;
         private System.Windows.Forms.TextBox tbxNamn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace knappSpel
 {
-    public partial class Form2 : Form
+    public partial class Highscore_Lista : Form
     {
         Label highscore;
 
@@ -19,7 +19,7 @@ namespace knappSpel
 
         int plats;
 
-        public Form2(Label highscoreLabel)
+        public Highscore_Lista(Label highscoreLabel)
         {
             InitializeComponent();
             highscore = highscoreLabel;
@@ -31,8 +31,6 @@ namespace knappSpel
 
         List<string> poängtavla = new List<string>();
 
-        List<string> namnLista = new List<string>();
-
         //Bools
         public static bool nyStart { get; set; }
 
@@ -41,22 +39,21 @@ namespace knappSpel
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(tbxNamn.Text.Length <= 8)
+            if(tbxNamn.Text.Length <= 8 && tbxNamn.Text.Length >= 1)
             {
                 namn = tbxNamn.Text;
-                namnLista.Add(namn);
-                poängLista.Add(Form1.poäng);
-                if (poängLista.Count != 1)
+                poängLista.Add(KnappSpel.poäng);
+                if (poängLista.Count > 1)
                 {
                     for (int i = 0; i < poängLista.Count; i++)
                     {
-                        if (Form1.poäng >= poängLista[i])
+                        if (KnappSpel.poäng >= poängLista[i])
                         {
                             räknare++;
                         }
                     }
                     plats = poängLista.Count - räknare;
-                    poängtavla.Insert(plats, namn + "  " + Form1.poäng);
+                    poängtavla.Insert(plats, namn + "  " + KnappSpel.poäng);
                     highscore.Text = "Highscore lista" + "\r\n";
                     for(int i = 0; i<poängLista.Count; i++)
                     {
@@ -65,7 +62,7 @@ namespace knappSpel
                 }
                 else
                 {
-                    poängtavla.Add(namn + "  " + Form1.poäng);
+                    poängtavla.Add(namn + "  " + KnappSpel.poäng);
                     highscore.Text += poängtavla[0];
                 }
                 räknare = 0;
@@ -90,12 +87,12 @@ namespace knappSpel
 
         private void Form2_Shown(object sender, EventArgs e)
         {
-            lblVisaPoäng.Text = "Slutpoäng: " + Form1.poäng;
+
         }
 
         private void Form2_Activated(object sender, EventArgs e)
         {
-            lblVisaPoäng.Text = "Slutpoäng: " + Form1.poäng;
+            lblVisaPoäng.Text = "Slutpoäng: " + KnappSpel.poäng;
         }
     }
 }

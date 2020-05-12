@@ -10,18 +10,18 @@ using System.Windows.Forms;
 
 namespace knappSpel
 {
-    public partial class Form1 : Form
+    public partial class KnappSpel : Form
     {
-        public Form1()
+        public KnappSpel()
         {
             InitializeComponent();
-            Form2.nyStart = true;
+            Highscore_Lista.nyStart = true;
             lblPoänglista.Text = "Highscore lista" + "\r\n";
-            highscore = new Form2(lblPoänglista);
+            highscore = new Highscore_Lista(lblPoänglista);
         }
 
         //Forms
-        public static Form2 highscore;
+        public static Highscore_Lista highscore;
 
         //Listor
         List<Button> knappLista = new List<Button>();
@@ -87,7 +87,7 @@ namespace knappSpel
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            if (Form2.nyStart == true)
+            if (Highscore_Lista.nyStart == true)
             {
                 lblLiv.Text = "Liv: " + liv;
 
@@ -122,7 +122,7 @@ namespace knappSpel
                     restart = true;
                 }
                 startaSpel = true;
-                Form2.nyStart = false;
+                Highscore_Lista.nyStart = false;
                 btnStart.Text = "börja nivå";
                 liv = 3;
                 lblLiv.Text = "Liv: " + liv;
