@@ -41,9 +41,10 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(26, 12);
+            this.btnStart.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStart.Location = new System.Drawing.Point(12, 12);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(75, 23);
+            this.btnStart.Size = new System.Drawing.Size(121, 44);
             this.btnStart.TabIndex = 0;
             this.btnStart.Text = "Starta";
             this.btnStart.UseVisualStyleBackColor = true;
