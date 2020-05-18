@@ -104,7 +104,7 @@ namespace knappSpel
                         knappLista.ElementAt(i).Size = new System.Drawing.Size(50, 50);
                         knappLista.ElementAt(i).UseVisualStyleBackColor = true;
                         knappLista.ElementAt(i).TabIndex = 0;
-                        knappLista.ElementAt(i).BackColor = Color.FromArgb(255, 255, 255);
+                        knappLista.ElementAt(i).BackColor = Color.White;
                         knappLista.ElementAt(i).Tag = i;
 
                         //Lägg till knappen i Formen
@@ -177,7 +177,7 @@ namespace knappSpel
                  b2 = b;
                  fårKlicka = false;
                  b2 = sender as Button;
-                 b2.BackColor = Color.FromArgb(255, 0, 0);
+                 b2.BackColor = Color.Red;
                  spelknapp = true;
                  Ljud();
                  timerKlick.Enabled = true;
@@ -187,7 +187,7 @@ namespace knappSpel
             else if(spela == true)
             {
                 b = sender as Button;
-                b.BackColor = Color.FromArgb(255, 0, 0);
+                b.BackColor = Color.Red;
                 spela = false;
                 timerKlick.Enabled = true;
 
@@ -255,9 +255,9 @@ namespace knappSpel
 
         private void timerKlick_Tick(object sender, EventArgs e)
         {
-            b.BackColor = Color.FromArgb(255, 255, 255);
+            b.BackColor = Color.White;
 
-            b2.BackColor = Color.FromArgb(255, 255, 255);
+            b2.BackColor = Color.White;
             
             if(simulation == false)
             {

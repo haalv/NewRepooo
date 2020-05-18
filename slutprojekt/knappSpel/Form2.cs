@@ -12,6 +12,7 @@ namespace knappSpel
 {
     public partial class Highscore_Lista : Form
     {
+        //label
         Label highscore;
 
         //ints
@@ -23,6 +24,8 @@ namespace knappSpel
         {
             InitializeComponent();
             highscore = highscoreLabel;
+
+            //Ta bort alternativ för att manipulera fönstret
             this.ControlBox = false;
         }
 
@@ -41,10 +44,12 @@ namespace knappSpel
         {
             if(tbxNamn.Text.Length <= 8 && tbxNamn.Text.Length >= 1)
             {
+                //Lägg in spelarens poäng i en poänglista
                 namn = tbxNamn.Text;
                 poängLista.Add(KnappSpel.poäng);
                 if (poängLista.Count > 1)
                 {
+                    //Loopa igenom alla poäng och bestäm spelarens plats i highscore listan
                     for (int i = 0; i < poängLista.Count; i++)
                     {
                         if (KnappSpel.poäng >= poängLista[i])
@@ -53,18 +58,22 @@ namespace knappSpel
                         }
                     }
                     plats = poängLista.Count - räknare;
+                    //Gör en sträng av spelarens namn och respektive poäng på rätt plats i listan
                     poängtavla.Insert(plats, namn + "  " + KnappSpel.poäng);
+                    //Skriv om highscore listan med den nya spelarens poäng
                     highscore.Text = "Highscore lista" + "\r\n";
                     for(int i = 0; i<poängLista.Count; i++)
                     {
                         highscore.Text += poängtavla[i] + "\r\n";
                     }
                 }
+                //Om det är den absolut första spelaren att spela så sätts spelarens poäng som högsta highscore
                 else
                 {
                     poängtavla.Add(namn + "  " + KnappSpel.poäng);
                     highscore.Text += poängtavla[0];
                 }
+                //återställ spelet och göm highscore formen
                 räknare = 0;
                 nyStart = true;
                 tbxNamn.Text = "";
@@ -72,6 +81,7 @@ namespace knappSpel
             }
             else
             {
+                //Om spelaren angiver ett namn utanför restriktionerna
                 MessageBox.Show("Felinmatning");
             }
         }
@@ -92,6 +102,7 @@ namespace knappSpel
 
         private void Form2_Activated(object sender, EventArgs e)
         {
+            //slutpoängen visas när formen aktiveras
             lblVisaPoäng.Text = "Slutpoäng: " + KnappSpel.poäng;
         }
     }
